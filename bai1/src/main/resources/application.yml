@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: bai1
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?user=postgres.hklziouopgggqgquekhv&password=Buithaison@170106
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  ai:
+    openai:
+      base-url: https://openrouter.ai/api/v1
+      api-key: ${OPEN_ROUTER_API_KEY}
+      chat:
+        model: gpt-oss-20b
+        temperature: 0.3
+      embedding:
+        model: text-embedding-3-small
+        dimensions: 1536
+    vectorstore:
+      pgvector:
+        index-type: hnsw
+        distance-type: cosine_distance
+        dimensions: 1536
+        initialize-schema: true
